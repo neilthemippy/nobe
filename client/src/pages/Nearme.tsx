@@ -27,9 +27,30 @@ const [latitude, setLatitude] = useState(0);
 const [radius, setRadius] = useState(0);
 const [booksNearBy, setBooksNearBy] = useState<Book[]>([]);
 
+
+const  saveLocation = async () => {
+
+  const updatedLocation = {
+      lat: latitude,
+      lng: longitude
+  }
+
+  try {
+    // Send the PUT request using Axios
+const response = axios.put(`location/b5d4ae80-16f5-4d59-94d2-4e1a15a13548`, { location: updatedLocation })
+  // Handle successful response
+  console.log('User location updated:', response);
+
+} catch(error) {
+  // Handle error
+  console.error('Failed to update user location:', error);
+
+};
+}
+
 const  getBooksNearMe = async () => {
   try {
-    const res = await axios.get('/location/locations', { params: {longitude: longitude, latitude: latitude, radius: radius } });
+    const res = await axios.get('/location/b5d4ae80-16f5-4d59-94d2-4e1a15a13548/nearby-places', { params: {d: radius}});
     console.log(res);
    // setBooksNearBy(res.data);
   } catch (err) {
@@ -71,6 +92,7 @@ const handleRadiusChange = (e:any) => {
         suggestionsChange={onSuggectionChange}
       />
     </GeoapifyContext>
+    <button type="button" onClick={saveLocation}>Save Address</button>
     <input
       type="number"
       value={radius}

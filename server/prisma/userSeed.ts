@@ -1,3 +1,4 @@
+
 const { PrismaClient } = require('@prisma/client')
 
 const prisma = new PrismaClient()
@@ -11,7 +12,7 @@ async function seed() {
       googleId: '123456789',
       latitude: 29.968543,
       longitude: -90.036728,
-      radius: 4
+      radius: 0
     }
   })
 
@@ -23,7 +24,7 @@ async function seed() {
       googleId: '987654321',
       latitude: 30.012171,
       longitude: -90.131527,
-      radius: 2
+      radius: 0
     }
   })
 
