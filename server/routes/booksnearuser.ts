@@ -86,7 +86,7 @@ LocationRoute.put('/:id', async (req: AuthenticatedRequest, res: Response) => {
 // //   }
 // // })
 
-LocationRoute.get(`/:userId/nearby-places`, async (req: AuthenticatedRequest, res: Response) => {
+LocationRoute.get(`/:id/nearby-places`, async (req: AuthenticatedRequest, res: Response) => {
   console.log(req);
   const { userId } = req.params
   const { d } = req.query
